@@ -7,7 +7,7 @@ import (
 
 /*
 	DirEntry：表示目录形式的类路径
- */
+*/
 
 type DirEntry struct {
 	absDir string //存放目录的绝对路径
@@ -30,6 +30,7 @@ func (d *DirEntry) readClass(className string) ([]byte, Entry, error) {
 	return data, d, err
 }
 
+//直接返回绝对路径目录
 func (d *DirEntry) String() string {
 	return d.absDir
 }
