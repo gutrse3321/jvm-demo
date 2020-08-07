@@ -11,10 +11,10 @@ import (
 	WildcardEntry实际上也是CompositeEntry，不需要再定义新的类型
 */
 
-func newWildcardEntry(path string) CompositeEntry {
+func newWildcardEntry(path string) *CompositeEntry {
 	//去掉路径通配符*
 	baseDir := path[:len(path)-1] //删除通配符 *
-	compositeEntry := make([]Entry, 0)
+	var compositeEntry CompositeEntry
 
 	//调用Walk函数遍历baseDir创建ZipEntry
 	filepath.Walk(baseDir, func(path string, info os.FileInfo, err error) error {
@@ -35,5 +35,5 @@ func newWildcardEntry(path string) CompositeEntry {
 		return nil
 	})
 
-	return compositeEntry
+	return &compositeEntry
 }

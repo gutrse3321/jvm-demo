@@ -24,7 +24,8 @@ type Entry interface {
 //根据参数创建不同类型的Entry实例
 func newEntry(path string) Entry {
 	if strings.Contains(path, pathListSeparator) {
-		return newCompositeEntry(path)
+		com := newCompositeEntry(path)
+		return &com
 	}
 
 	if strings.HasSuffix(path, "*") {
